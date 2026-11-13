@@ -16,10 +16,9 @@ p.text-sm.font-medium.opacity-50 {
 }
 
 /***************************************
- * 2. 顶部时间数字（精准限定，不再误伤下方服务器在线时间）
+ * 2. 顶部时间数字（仅匹配滚轮数字组件，绝不误伤服务器在线时间）
  ***************************************/
-[data-issues-count-animation],
-section:first-of-type .flex.items-center.font-medium.text-sm .tabular-nums {
+[data-issues-count-animation] {
     font-size: 3rem !important;
     height: auto !important;
     line-height: 1 !important;
@@ -40,8 +39,7 @@ section:first-of-type .flex.items-center.font-medium.text-sm .tabular-nums {
 /***************************************
  * 3. 单个数字等宽居中（防抖）
  ***************************************/
-[data-issues-count-animation] > div,
-section:first-of-type .flex.items-center.font-medium.text-sm .tabular-nums > div {
+[data-issues-count-animation] > div {
     display: inline-block !important;
     min-width: 1.2ch !important;
     text-align: center !important;

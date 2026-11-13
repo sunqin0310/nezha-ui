@@ -1,65 +1,69 @@
+/* Nezha Official frontend v2.7.0
+ * Replace the old stylesheet; do NOT load both.
+ * Clock styling is confined to .header-timer.
+ * No global fonts, numeric selectors, or time calculation changes.
+ */
 
-/***************************************
- * 2. 时间数字（强制放大）
- ***************************************/
-[data-issues-count-animation] {
-    font-size: 3rem !important;
-    line-height: 1 !important;
-    height: 1em !important;
-    min-height: 1em !important;
-    font-weight: 600 !important;
+/* Hide overview greeting and clock caption only. */
+.header-timer > p,
+.header-timer > div > p {
+    display: none !important;
+}
 
+/* Clock row: HH : MM : SS */
+.header-timer > div > div.flex.items-center.font-medium.text-sm {
     display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    vertical-align: middle !important;
-
-    color: rgba(255, 255, 255, 0.75) !important;
-    text-shadow:
-        0 0 2px rgba(255, 255, 255, 0.35),
-        0 0 6px rgba(255, 255, 255, 0.18) !important;
-}
-
-/***************************************
- * 3. 强制内部数字继承字体大小
- ***************************************/
-[data-issues-count-animation] > div {
-    font-size: inherit !important;
-    line-height: inherit !important;
-    height: 100% !important;
-    min-width: 1.2ch !important;
-    text-align: center !important;
-}
-
-[data-issues-count-animation] > div > div {
-    font-size: inherit !important;
-    line-height: inherit !important;
-}
-
-/***************************************
- * 4. 冒号
- ***************************************/
-span.font-medium.text-sm.opacity-50 {
-    font-size: 2.8rem !important;
+    align-items: baseline !important;
+    min-height: 3.2rem !important;
+    height: auto !important;
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    font-size: 3rem !important;
+    font-weight: 600 !important;
     line-height: 1 !important;
-    vertical-align: middle !important;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.75) !important;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.35),
+                 0 0 6px rgba(255, 255, 255, 0.18);
+}
+
+/* Includes the extra wrapper around seconds in v2.7.0. */
+.header-timer > div > div.flex.items-center.font-medium.text-sm > span {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+.header-timer > div > div.flex.items-center.font-medium.text-sm .tabular-nums {
+    display: inline-block !important;
+    min-width: 2ch;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Colons only inside the clock. */
+.header-timer > div > div.flex.items-center.font-medium.text-sm > span.mb-px {
     margin: 0 0.25ch !important;
-
+    font-size: 2.8rem !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
     color: rgba(255, 255, 255, 0.55) !important;
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.22) !important;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.22);
 }
 
-/***************************************
- * 5. 移除像素补偿
- ***************************************/
-span.mb-px {
-    margin-bottom: 0 !important;
+/* Header controls only; never target dynamic Radix IDs.
+ * In v2.7.0 LanguageSwitcher immediately precedes ModeToggle.
+ * If this structure changes, these rules fail closed (leave buttons visible).
+ */
+.header-handles > button:has(+ button:has(svg.lucide-sun)):has(> span.sr-only),
+.header-handles > button:has(svg.lucide-sun):has(svg.lucide-moon),
+.header-handles > button:has(svg.lucide-image-minus) {
+    display: none !important;
 }
 
-/***************************************
- * 6. 时间容器高度
- ***************************************/
-.flex.items-center.font-medium.text-sm:has([data-issues-count-animation]) {
-    min-height: 3.5rem !important;
-    align-items: center !important;
-}
+/* Intentionally no generic dialog-button hiding rule.
+ * Intentionally no global [data-issues-count-animation], span.mb-px,
+ * .tabular-nums, p, or font-family overrides.
+ * Detail uptime, boot time, last-active time and online counts retain
+ * the theme's original styles and logic.
+ */

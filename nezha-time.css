@@ -1,40 +1,25 @@
-/**
- * Custom Theme Styles
- * 使用方法：<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ziwiwiz/nezha-ui@main/nezha-time.css">
- */
-
 /* 自定义字体 */
 * {
     font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
     font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
 }
 
-/* 隐藏底部页脚 */
-/*footer {
-    display: none;
-}*/
-
 /***************************************
- * 1. 隐藏"当前时间"文字
+ * 1. 隐藏"当前时间"等顶部多余提示文字
  ***************************************/
 p.text-base.font-semibold,
-/* overview */
 p.text-sm.font-medium.opacity-50 {
-    /* where the time is */
     display: none !important;
 }
 
 /***************************************
  * 2. 时间数字（低发光、清晰）
  ***************************************/
-[data-issues-count-animation] {
+[data-issues-count-animation],
+.tabular-nums {
     font-size: 3rem !important;
     height: auto !important;
     line-height: 1 !important;
@@ -55,7 +40,8 @@ p.text-sm.font-medium.opacity-50 {
 /***************************************
  * 3. 单个数字等宽居中（防抖）
  ***************************************/
-[data-issues-count-animation]>div {
+[data-issues-count-animation] > div,
+.tabular-nums > div {
     display: inline-block !important;
     min-width: 1.2ch !important;
     text-align: center !important;
@@ -71,40 +57,40 @@ span.font-medium.text-sm.opacity-50 {
     margin: 0 0.25ch !important;
 
     color: rgba(255, 255, 255, 0.55) !important;
-    text-shadow:
-        0 0 2px rgba(255, 255, 255, 0.22);
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.22);
 }
 
 /***************************************
- * 5. 移除 Tailwind 像素补偿
+ * 5. 移除 Tailwind 像素补偿与行高兜底
  ***************************************/
 span.mb-px {
     margin-bottom: 0 !important;
 }
 
-/***************************************
- * 6. 行高度兜底
- ***************************************/
 .flex.items-center.font-medium.text-sm {
     min-height: 3.2rem !important;
     align-items: center !important;
 }
 
-/* 不显示右上角语言切换按钮 */
-[id="radix-:r0:"] {
-    display: none;
-}
-
-/* 不显示右上角主题切换按钮 */
-[id="radix-:r2:"] {
-    display: none;
-}
-
-/* 不显示右下角的图片按钮 */
-button:has(.lucide-image-minus) {
+/***************************************
+ * 6. 隐藏右上角按钮（改用图标匹配，彻底解决 radix ID 变化失效问题）
+ ***************************************/
+/* 隐藏语言切换按钮 */
+button:has(.lucide-languages),
+button:has(.lucide-globe) {
     display: none !important;
 }
 
+/* 隐藏主题切换按钮（太阳/月亮图标） */
+button:has(.lucide-sun),
+button:has(.lucide-moon),
+button:has(.lucide-sun-moon) {
+    display: none !important;
+}
+
+/* 隐藏右下角背景图/设置按钮 */
+button:has(.lucide-image-minus),
+button:has(.lucide-image),
 button.rounded-\[50px\][aria-haspopup="dialog"] {
     display: none !important;
 }

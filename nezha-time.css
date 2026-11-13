@@ -55,7 +55,7 @@
  * In v2.7.0 LanguageSwitcher immediately precedes ModeToggle.
  * If this structure changes, these rules fail closed (leave buttons visible).
  */
-.header-handles > button:has(+ button:has(svg.lucide-sun)):has(> span.sr-only),
+.header-handles > button:has(> span.sr-only):has(+ button > svg.lucide-sun),
 .header-handles > button:has(svg.lucide-sun):has(svg.lucide-moon),
 .header-handles > button:has(svg.lucide-image-minus) {
     display: none !important;

@@ -1,54 +1,39 @@
 
-/**
- * Nezha V2 - Custom Time Theme
- * Compatible CSS for modern browsers
- */
-
 /***************************************
- * 0. 全局字体
- ***************************************/
-*,
-h1, h2, h3, h4, h5 {
-    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
-}
-
-/***************************************
- * 1. 隐藏当前时间文字
- ***************************************/
-p.text-base.font-semibold,
-p.text-sm.font-medium.opacity-50 {
-    display: none !important;
-}
-
-/***************************************
- * 2. 时间数字
+ * 2. 时间数字（强制放大）
  ***************************************/
 [data-issues-count-animation] {
     font-size: 3rem !important;
-    height: auto !important;
     line-height: 1 !important;
+    height: 1em !important;
+    min-height: 1em !important;
     font-weight: 600 !important;
 
     display: inline-flex !important;
     justify-content: center !important;
-    align-items: baseline !important;
+    align-items: center !important;
     vertical-align: middle !important;
 
     color: rgba(255, 255, 255, 0.75) !important;
-
     text-shadow:
         0 0 2px rgba(255, 255, 255, 0.35),
         0 0 6px rgba(255, 255, 255, 0.18) !important;
 }
 
 /***************************************
- * 3. 数字等宽居中
+ * 3. 强制内部数字继承字体大小
  ***************************************/
 [data-issues-count-animation] > div {
-    display: inline-block !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    height: 100% !important;
     min-width: 1.2ch !important;
     text-align: center !important;
-    font-variant-numeric: tabular-nums !important;
+}
+
+[data-issues-count-animation] > div > div {
+    font-size: inherit !important;
+    line-height: inherit !important;
 }
 
 /***************************************
@@ -61,80 +46,20 @@ span.font-medium.text-sm.opacity-50 {
     margin: 0 0.25ch !important;
 
     color: rgba(255, 255, 255, 0.55) !important;
-
-    text-shadow:
-        0 0 2px rgba(255, 255, 255, 0.22) !important;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.22) !important;
 }
 
 /***************************************
- * 5. 移除 Tailwind 像素补偿
+ * 5. 移除像素补偿
  ***************************************/
 span.mb-px {
     margin-bottom: 0 !important;
 }
 
 /***************************************
- * 6. 时间行高度
+ * 6. 时间容器高度
  ***************************************/
-.flex.items-center.font-medium.text-sm {
-    min-height: 3.2rem !important;
+.flex.items-center.font-medium.text-sm:has([data-issues-count-animation]) {
+    min-height: 3.5rem !important;
     align-items: center !important;
-}
-
-/***************************************
- * 7. 隐藏语言切换按钮
- * 不再依赖 Radix 动态 ID
- ***************************************/
-button:has(svg.lucide-languages),
-button:has(svg.lucide-globe),
-button[aria-label*="language" i],
-button[title*="language" i],
-button[aria-label*="语言"],
-button[title*="语言"] {
-    display: none !important;
-}
-
-/***************************************
- * 8. 隐藏主题切换按钮
- * 不再依赖 Radix 动态 ID
- ***************************************/
-button:has(svg.lucide-sun),
-button:has(svg.lucide-moon),
-button:has(svg.lucide-sun-moon),
-button[aria-label*="theme" i],
-button[title*="theme" i],
-button[aria-label*="主题"],
-button[title*="主题"] {
-    display: none !important;
-}
-
-/***************************************
- * 9. 隐藏右下角图片按钮
- ***************************************/
-button:has(svg.lucide-image-minus),
-button:has(svg.lucide-image),
-button[aria-label*="image" i],
-button[title*="image" i] {
-    display: none !important;
-}
-
-/***************************************
- * 10. 隐藏右下角图片弹窗入口
- * 仅针对图片相关图标，不再隐藏所有 dialog
- ***************************************/
-button:has(svg[class*="lucide-image"]) {
-    display: none !important;
-}
-
-/***************************************
- * 11. 移动端适配
- ***************************************/
-@media (max-width: 768px) {
-    [data-issues-count-animation] {
-        font-size: 2.4rem !important;
-    }
-
-    span.font-medium.text-sm.opacity-50 {
-        font-size: 2.2rem !important;
-    }
 }

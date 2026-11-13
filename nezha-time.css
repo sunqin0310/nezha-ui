@@ -16,10 +16,10 @@ p.text-sm.font-medium.opacity-50 {
 }
 
 /***************************************
- * 2. 时间数字（低发光、清晰）
+ * 2. 顶部时间数字（精准限定，不再误伤下方服务器在线时间）
  ***************************************/
 [data-issues-count-animation],
-.tabular-nums {
+section:first-of-type .flex.items-center.font-medium.text-sm .tabular-nums {
     font-size: 3rem !important;
     height: auto !important;
     line-height: 1 !important;
@@ -41,7 +41,7 @@ p.text-sm.font-medium.opacity-50 {
  * 3. 单个数字等宽居中（防抖）
  ***************************************/
 [data-issues-count-animation] > div,
-.tabular-nums > div {
+section:first-of-type .flex.items-center.font-medium.text-sm .tabular-nums > div {
     display: inline-block !important;
     min-width: 1.2ch !important;
     text-align: center !important;
@@ -57,7 +57,8 @@ span.font-medium.text-sm.opacity-50 {
     margin: 0 0.25ch !important;
 
     color: rgba(255, 255, 255, 0.55) !important;
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.22);
+    text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.22);
 }
 
 /***************************************
@@ -73,22 +74,13 @@ span.mb-px {
 }
 
 /***************************************
- * 6. 隐藏右上角按钮（改用图标匹配，彻底解决 radix ID 变化失效问题）
+ * 6. 隐藏右上角与右下角按钮（图标特征匹配）
  ***************************************/
-/* 隐藏语言切换按钮 */
 button:has(.lucide-languages),
-button:has(.lucide-globe) {
-    display: none !important;
-}
-
-/* 隐藏主题切换按钮（太阳/月亮图标） */
+button:has(.lucide-globe),
 button:has(.lucide-sun),
 button:has(.lucide-moon),
-button:has(.lucide-sun-moon) {
-    display: none !important;
-}
-
-/* 隐藏右下角背景图/设置按钮 */
+button:has(.lucide-sun-moon),
 button:has(.lucide-image-minus),
 button:has(.lucide-image),
 button.rounded-\[50px\][aria-haspopup="dialog"] {
